@@ -7,7 +7,10 @@ public class ClearPoint : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            SceneManager.LoadScene("Clear"); 
+            Scene scene = SceneManager.GetActiveScene();
+            int curScene = scene.buildIndex;
+            int nextScene = curScene + 1;
+            SceneManager.LoadScene(nextScene);
         }
     }
 }

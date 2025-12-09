@@ -36,7 +36,6 @@ public class PlayerController : MonoBehaviour
     {
         _isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
 
-        // 즉시 좌우 반전
         if (_moveInput.x > 0.1f)
             transform.localScale = new Vector3(2.5f, 2.5f, 1);
         else if (_moveInput.x < -0.1f)
@@ -55,7 +54,6 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        // 일반 이동
         float targetSpeed = _moveInput.x * _moveSpeed;
         _rigid.linearVelocity = new Vector2(
             Mathf.Lerp(_rigid.linearVelocity.x, targetSpeed, 0.2f),

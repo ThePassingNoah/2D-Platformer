@@ -4,8 +4,10 @@ using UnityEngine.Tilemaps;
 
 public class HiddenMap : MonoBehaviour
 {
-    public GameObject hidden;
+    public GameObject Hidden;
+    public GameObject FakeHidden;
     private TilemapRenderer Renderer;
+    private TilemapRenderer FakeRenderer;
     public float ViewTime = 4f;
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -18,7 +20,8 @@ public class HiddenMap : MonoBehaviour
 
     private void OnView()
     {
-        Renderer = hidden.GetComponent<TilemapRenderer>();
+        Renderer = Hidden.GetComponent<TilemapRenderer>();
+        FakeRenderer = FakeHidden.GetComponent<TilemapRenderer>();
         ViewOn();
         Invoke("ViewOff", ViewTime);
     }
@@ -26,10 +29,12 @@ public class HiddenMap : MonoBehaviour
     private void ViewOn() 
     {
         Renderer.enabled = true;
+        FakeRenderer.enabled = true;
     }
-    private void ViewOff() 
+    private void ViewOff()
     {
         Renderer.enabled = false;
+        FakeRenderer.enabled = false;
     }
 
 }
